@@ -1,5 +1,6 @@
 package org.fasttrackit;
 
+import javax.management.PersistentMBean;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
@@ -44,14 +45,22 @@ public class App
         car.name = null;
 
         // concatenation
-        System.out.println("car2 name: " + car2.name);
-        System.out.println("car1 name: " + car.name);
+//        System.out.println("car2 name: " + car2.name);
+//        System.out.println("car1 name: " + car.name);
 
         car = car2;
+        
 
         Scanner scanner = new Scanner(System.in) ;
         String text = scanner.nextLine() ;
         System.out.println("input from user: " + text);
+//        System.out.println("Please enter some text");
+//        System.out.println(4 % 2);
+//        System.out.println(4 % 3);
+//        Scanner scanner1 = new Scanner(System.in);
+//        String  newtext = scanner.nextLine();
+//        System.out.println("Input from user: " = newtext);
+
 
 
 
