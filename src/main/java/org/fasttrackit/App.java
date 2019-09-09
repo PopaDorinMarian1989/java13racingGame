@@ -13,6 +13,7 @@ public class App
     public static void main( String[] args )
     {
         // this is a one-line comment
+        //AutoVehicle autoVehicle = new AutoVehicle();
         Engine engine = new Engine();
         engine.manufacturer = "Renault";
         engine.capacity = 1600;
