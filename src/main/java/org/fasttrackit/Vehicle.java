@@ -21,7 +21,17 @@ public class Vehicle{
 
 
     public double accelerate (double speed, double durationinHours) {
+        if(speed > maxSpeed){
+            System.out.println("Maximum speed exceeded");
+            return 0;
+        }
+
+        if (fuelLevel <= 0) {
+            System.out.println("You are out of fuel...");
+            return 0;
+        }
         System.out.println(name + " is accelerating with" + speed + " km/h for " + durationinHours + " h.");
+
         double distance = speed * durationinHours;
 
         System.out.println("Distance : " + distance);
