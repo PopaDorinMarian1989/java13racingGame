@@ -18,7 +18,26 @@ public class Game {
         initializeTracks();
         displayTracks();
 
+        Track selectedTrack = getSelectedTrackFromUser();
+
         initializeCompetitors();
+
+
+    }
+
+    private Track getSelectedTrackFromUser() {
+        System.out.println("Please select a track.");
+        Scanner scanner = new Scanner(System.in);
+
+
+        try {
+            int userChoise = scanner.nextInt();
+            return tracks[userChoise - 1];
+        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("You have entered an invalid number.");
+            //recursion - a method callin itself
+            return getSelectedTrackFromUser();
+        }
 
 
     }
@@ -44,7 +63,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         scanner.nextInt();
         try {
-        return scanner.nextInt();
+            return scanner.nextInt();
         } catch (InputMismatchException e) {
             throw new Exception("You have entered an invalid number");
         } finally {
