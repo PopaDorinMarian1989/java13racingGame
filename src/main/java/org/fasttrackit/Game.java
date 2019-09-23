@@ -1,7 +1,9 @@
 package org.fasttrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
@@ -21,21 +23,35 @@ public class Game {
 
     }
 
-    private void initializeCompetitors(){
-        int competitorCount = 2;
+    private void initializeCompetitors() {
+        int competitorCount = getCompetitorCoutFromUser();
 
         System.out.println("Today's competisors are");
-        for(int i = 0; i < competitorCount; i++){
+        for (int i = 0; i < competitorCount; i++) {
             Vehicle competitor = new Vehicle();
             competitor.setName("Copetitor " + i);
             competitor.setMaxSpeed(300);
-            competitor.setMileage(ThreadLocalRandom.current().nextDouble(6,12));
+            competitor.setMileage(ThreadLocalRandom.current().nextDouble(6, 12));
             competitor.setFuelLevel(80);
             System.out.println(competitor);
 
             competitors.add(competitor);
         }
     }
+
+    private int getCompetitorCoutFromUser() {
+        System.out.println("Please enter number of players");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextInt();
+        try {
+        return scanner.nextInt();
+        } catch (InputMismatchException e) {
+            throw new RuntimeException("You have entered an invalid number");
+        } finally {
+            System.out.println("Finally block is always executed");
+        }
+    }
+
     private void initializeTracks() {
         Track track1 = new Track();
         track1.setName("Monte Carlo");
