@@ -1,5 +1,6 @@
 package org.fasttrackit;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -21,9 +22,26 @@ public class Game {
         Track selectedTrack = getSelectedTrackFromUser();
 
         initializeCompetitors();
+        //for-each or enhance for loop
+        for (Vehicle vehicle : competitors) {
+            double speed = getAccelerationSpeedFromUser();
+            vehicle.accelerate(speed, 1);
+        }
 
 
     }
+
+    private double getAccelerationSpeedFromUser() {
+        System.out.println("Please enter acceleration speed");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            double speed = scanner.nextDouble();
+        } catch (InputMismatchException e) {
+            System.out.println("You have entered an invalid number");
+           return getAccelerationSpeedFromUser();
+        }
+    }
+
 
     private Track getSelectedTrackFromUser() {
         System.out.println("Please select a track.");
