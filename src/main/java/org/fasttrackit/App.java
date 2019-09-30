@@ -13,6 +13,10 @@ public class App
     public static void main( String[] args ) throws Exception {
         Game game = new Game();
         game.start();
+
+       // do{
+         //   System.out.println("Repeating something");
+       // } while (true);
 //        // this is a one-line comment
 //        //AutoVehicle autoVehicle = new AutoVehicle();
 //        Engine engine = new Engine();

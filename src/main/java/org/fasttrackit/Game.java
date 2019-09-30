@@ -22,10 +22,24 @@ public class Game {
         Track selectedTrack = getSelectedTrackFromUser();
 
         initializeCompetitors();
-        //for-each or enhance for loop
-        for (Vehicle vehicle : competitors) {
-            double speed = getAccelerationSpeedFromUser();
-            vehicle.accelerate(speed, 1);
+
+        boolean winnerNotKnow = true;
+        int competitorWithoutFuel = 0;
+        while (winnerNotKnow && competitorWithoutFuel < competitors.size()) {
+            //for-each or enhance for loop
+            for (Vehicle vehicle : competitors) {
+                double speed = getAccelerationSpeedFromUser();
+                vehicle.accelerate(speed, 1);
+                if (selectedTrack.getLenght() <= vehicle.getTraveledDistance()) {
+                    winnerNotKnow = false;
+                    System.out.println("The winner is: " + vehicle.getName());
+                    break;
+                }
+                if (vehicle.getFuelLevel() <= 0) {
+                    competitorWithoutFuel++;
+                }
+
+            }
         }
 
 
@@ -35,11 +49,13 @@ public class Game {
         System.out.println("Please enter acceleration speed");
         Scanner scanner = new Scanner(System.in);
         try {
-            double speed = scanner.nextDouble();
+             return scanner.nextDouble();
         } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid number");
-           return getAccelerationSpeedFromUser();
+            return getAccelerationSpeedFromUser();
         }
+
+
     }
 
 
