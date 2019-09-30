@@ -26,8 +26,10 @@ public class Game {
         boolean winnerNotKnow = true;
         int competitorWithoutFuel = 0;
         while (winnerNotKnow && competitorWithoutFuel < competitors.size()) {
+            System.out.println("New round...\n");
             //for-each or enhance for loop
             for (Vehicle vehicle : competitors) {
+                System.out.println("It's " + vehicle.getName() + "'s turn");
                 double speed = getAccelerationSpeedFromUser();
                 vehicle.accelerate(speed, 1);
                 if (selectedTrack.getLenght() <= vehicle.getTraveledDistance()) {
